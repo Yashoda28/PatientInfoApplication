@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PatientInfoApplication2</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnReg">Register</string>
+    <string name="tvLogin">Back to Login</string>
+
+    <!--adding-->
+    <string name="txtPDetails">Personal Details</string>
+    <string name="txtPname">Patient Name:</string>
+    <string name="txtSurname">Surname:</string>
+    <string name="txtID">ID Number:</string>
+    <string name="txtDOB">Date of Birth:</string>
+    <string name="txtCellNum">Cell Number:</string>
+    <string name="txtBType">Blood Type:</string>
+    <string name="txtEDetails">Emergency Details</string>
+    <string name="txtEName">Name:</string>
+    <string name="txtENum">Cell Number:</string>
+
+    <string name="btnAdd">ADD</string>
+    <string name="btnUpdate">UPDATE</string>
+    <string name="btnViewFees">VIEW FEES</string>
+    <string name="btnLogout">LOGOUT</string>
+</resources>
