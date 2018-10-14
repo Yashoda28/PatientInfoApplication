@@ -38,7 +38,7 @@
             android:text="Patient Name:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtPname"
             android:textSize="20sp"
@@ -47,8 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:inputType="text"
+            android:layout_marginTop="25dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -68,7 +69,7 @@
             android:text="Surname:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtSurname"
             android:textSize="20sp"
@@ -78,7 +79,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -98,7 +101,7 @@
             android:text="ID Number:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtID"
             android:textSize="20sp"
@@ -108,7 +111,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -128,7 +133,7 @@
             android:text="Date of Birth:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtDOB"
             android:textSize="20sp"
@@ -138,7 +143,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -158,7 +165,7 @@
             android:text="Cell Number:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtCellNum"
             android:textSize="20sp"
@@ -168,7 +175,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -188,7 +197,7 @@
             android:text="Blood Type:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtBType"
             android:textSize="20sp"
@@ -198,7 +207,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -228,7 +239,7 @@
             android:text="Contact Type:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtEType"
             android:textSize="20sp"
@@ -238,7 +249,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -258,7 +271,7 @@
             android:text="Name:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtEName"
             android:textSize="20sp"
@@ -268,7 +281,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -288,7 +303,7 @@
             android:text="Cell Number:"
             android:textSize="20sp"
             android:textStyle="bold" />
-        <EditText
+        <TextView
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtENum"
             android:textSize="20sp"
@@ -298,7 +313,9 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="text"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentTop="true"
+            android:text=""
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>

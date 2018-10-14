@@ -55,13 +55,22 @@
         android:layout_marginRight="10dp" />
     <!--android:onClick="register"-->
 
-    <TextView
+   <!-- <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Back to Login"
         android:id="@+id/tvLogin"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/white" />
+        android:textColor="@color/white" />-->
+
+    <Button
+        android:id="@+id/btnBackToLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Back to Login"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

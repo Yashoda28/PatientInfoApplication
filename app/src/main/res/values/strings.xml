@@ -3,7 +3,8 @@
     <string name="btnLogin">Login</string>
     <string name="btnRegisterOnLogIn">Register</string>
     <string name="btnRegisterOnRegister">Register</string>
-    <string name="tvLogin">Back to Login</string>
+    <!--<string name="tvLogin">Back to Login</string>-->
+    <string name="btnBackToLogin">Back to Login</string>
 
     <!--adding-->
     <string name="txtPDetails">Personal Details</string>
