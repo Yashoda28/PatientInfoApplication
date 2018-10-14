@@ -304,7 +304,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnUpdateOnViewing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -313,7 +313,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
     <Button
-        android:id="@+id/btnViewFees"
+        android:id="@+id/btnViewFeesOnViewing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -327,7 +327,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnLogoutOnViewing"
         android:text="LOGOUT"
         android:layout_alignParentBottom="true" />
 

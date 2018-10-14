@@ -313,7 +313,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnUpdateOnAdding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -322,7 +322,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
     <Button
-        android:id="@+id/btnViewFees"
+        android:id="@+id/btnViewFeesOnAdding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -336,7 +336,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
 
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnLogoutOnAdding"
         android:text="LOGOUT"
         android:layout_alignParentBottom="true" />
 

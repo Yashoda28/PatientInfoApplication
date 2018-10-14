@@ -14,7 +14,7 @@ public class ViewingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewing);
 
-        Button btnUpdate= findViewById(R.id.btnUpdate);
+        Button btnUpdate= findViewById(R.id.btnUpdateOnViewing);
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -22,7 +22,7 @@ public class ViewingActivity extends AppCompatActivity {
             }
         });
 
-        Button btnFees= findViewById(R.id.btnViewFees);
+        Button btnFees= findViewById(R.id.btnViewFeesOnViewing);
         btnFees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

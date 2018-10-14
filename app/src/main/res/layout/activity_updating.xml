@@ -304,7 +304,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/btnUpdate"
+        android:id="@+id/btnUpdateOnUpdating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -318,7 +318,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:id="@+id/btnLogout"
+        android:id="@+id/btnLogoutOnUpdating"
         android:text="LOGOUT"
         android:layout_alignParentBottom="true" />
 

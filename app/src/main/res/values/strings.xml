@@ -18,7 +18,12 @@
     <string name="txtENum">Cell Number:</string>
 
     <string name="btnAdd">ADD</string>
-    <string name="btnUpdate">UPDATE</string>
-    <string name="btnViewFees">VIEW FEES</string>
-    <string name="btnLogout">LOGOUT</string>
+    <string name="btnUpdateOnAdding">UPDATE</string>
+    <string name="btnUpdateOnUpdating">UPDATE</string>
+    <string name="btnUpdateOnViewing">UPDATE</string>
+    <string name="btnViewFeesOnAdding">VIEW FEES</string>
+    <string name="btnViewFeesOnViewing">VIEW FEES</string>
+    <string name="btnLogoutOnAdding">LOGOUT</string>
+    <string name="btnLogoutOnUpdating">LOGOUT</string>
+    <string name="btnLogoutOnViewing">LOGOUT</string>
 </resources>
