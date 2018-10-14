@@ -31,51 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText editTextEmailAddress = findViewById(R.id.etRegisterEmail);
         final EditText editTextPassword = findViewById(R.id.etRegisterPass);
 
-        createRegisterButton(btnReg, editTextEmailAddress, editTextPassword);
-        createBackToLoginButton(btnBackToLogin);
-
         connectivity.execute("");
     }
 
-    private void createRegisterButton(Button btnReg,final EditText editTextEmailAddress, final EditText editTextPassword) {
 
-        btnReg.setOnClickListener(new View.OnClickListener()
-        {
-            final String emailAddress = editTextEmailAddress.getText().toString();
-            final String password = editTextPassword.getText().toString();
-            @Override
-            public void onClick(View v)
-            {
-
-
-                startActivity(new Intent(context,AddingActivity.class));
-            }
-        });
-    }
-
-    private void Register(String emailAddress, String password) throws Exception {
-        ResultSet rs = getResultSet(getRegisterQuery(emailAddress, password));
-        ArrayList<String> data;
-
-        data = new ArrayList<>();
-        while (rs.next())
-        {
-             //data.add(rs.getInt( 1),null, null, rs.getString(2),rs.getString(3), null, null, null, null, null);
-        }
-    }
-
-    private void createBackToLoginButton(Button btnBackToLogin) {
-        btnBackToLogin.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context,LogInActivity.class));
-            }
-        });
-    }
-
-    private String getRegisterQuery(String emailAddress, String password) {
-        return "INSERT INTO FROM PATIENT P WHERE P.EMAILADDRESS = '" + emailAddress + "' AND P.PASSWORD = '" + password + "'";
-    }
 
 }
