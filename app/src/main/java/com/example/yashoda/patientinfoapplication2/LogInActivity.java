@@ -31,9 +31,9 @@ public class LogInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_log_in);
 
         Button btnLogin = findViewById(R.id.btnLogin);
-        Button btnReg = findViewById(R.id.btnReg);
-        final EditText editTextEmailAddress = findViewById(R.id.etEmail);
-        final EditText editTextPassword = findViewById(R.id.etPass);
+        Button btnReg = findViewById(R.id.btnRegisterOnLogIn);
+        final EditText editTextEmailAddress = findViewById(R.id.etLoginEmail);
+        final EditText editTextPassword = findViewById(R.id.etLoginPass);
 
         createLoginBtn(btnLogin, editTextEmailAddress, editTextPassword);
         createRegistrationBtn(btnReg);
