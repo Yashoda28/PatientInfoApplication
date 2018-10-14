@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
+
 public class AddingActivity extends AppCompatActivity {
     Connectivity connectivity = new Connectivity();
 
@@ -36,35 +42,40 @@ public class AddingActivity extends AppCompatActivity {
         createRegisterButton(btnRegister, editTextPName, editTextSurname, editTextEmailAddress, editTextPassword,editTextID,editTextDOB,editTextCellNum,editTextBloodType,
                 editTextEType,editTextEName,editTextENum);
         createBackToLoginButton(btnBack);
-
-
-        connectivity.execute("");
     }
 
     private void createRegisterButton(Button btnReg,final EditText editTextPName,final EditText editTextSurname,final EditText editTextEmailAddress, final EditText editTextPassword,
                                       final EditText editTextID,final EditText editTextDOB,final EditText editTextCellNum,final EditText editTextBloodType,final EditText editTextEType,
                                       final EditText editTextEName,final EditText editTextENum) {
 
-        btnReg.setOnClickListener(new View.OnClickListener()
-        {
-            final String PName = editTextPName.getText().toString();
-            final String Surname = editTextSurname.getText().toString();
-            final String emailAddress = editTextEmailAddress.getText().toString();
-            final String password = editTextPassword.getText().toString();
-            final String IDNum = editTextID.getText().toString();
-           // final Date date1= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(editTextDOB.getText().toString());
-            final String cellNum = editTextCellNum.getText().toString();
-            final String BType = editTextBloodType.getText().toString();
-            final String EType = editTextEType.getText().toString();
-            final String EName = editTextEName.getText().toString();
-            final String ENum = editTextENum.getText().toString();
-            @Override
-            public void onClick(View v)
+        try {
+            btnReg.setOnClickListener(new View.OnClickListener()
             {
-                //Register();
-                startActivity(new Intent(context,ViewingActivity.class));
-            }
-        });
+                final String PName = editTextPName.getText().toString();
+                final String Surname = editTextSurname.getText().toString();
+                final String emailAddress = editTextEmailAddress.getText().toString();
+                final String password = editTextPassword.getText().toString();
+                final String IDNum = editTextID.getText().toString();
+                final Date date1= (Date) new SimpleDateFormat("dd/MM/yyyy").parse(editTextDOB.getText().toString());
+                final String cellNum = editTextCellNum.getText().toString();
+                final String BType = editTextBloodType.getText().toString();
+                final String EType = editTextEType.getText().toString();
+                final String EName = editTextEName.getText().toString();
+                final String ENum = editTextENum.getText().toString();
+                @Override
+                public void onClick(View v)
+                {
+                    //Register();
+                    startActivity(new Intent(context,ViewingActivity.class));
+                }
+            });
+        } catch (final ParseException e) {
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    handleException(context, e, "Please enter valid Date");
+                }
+            });
+        }
     }
 
     /*private String Register() {
