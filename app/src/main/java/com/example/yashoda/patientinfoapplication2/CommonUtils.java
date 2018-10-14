@@ -6,8 +6,8 @@ import android.widget.Toast;
 
 class CommonUtils {
 
-    static void showMessage(Context context, String failedToConnectErrorMessage) {
-        Toast.makeText(context, failedToConnectErrorMessage, Toast.LENGTH_LONG).show();
+    static void showMessage(final Context context, final String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
     static void Log(Exception se) {

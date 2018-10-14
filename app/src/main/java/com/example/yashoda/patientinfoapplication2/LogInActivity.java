@@ -53,8 +53,13 @@ public class LogInActivity extends AppCompatActivity {
                     public void run() {
                         try {
                             LogIn(emailAddress, password);
-                        } catch (Exception e) {
-                            handleException(context, e, e.getMessage());
+                        } catch (final Exception e) {
+                            progressDialog.cancel();
+                            runOnUiThread(new Runnable() {
+                                public void run() {
+                                    handleException(context, e, e.getMessage());
+                                }
+                            });
                         }
                     }
                 }).start();
