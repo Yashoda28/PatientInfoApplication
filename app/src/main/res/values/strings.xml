@@ -23,12 +23,11 @@
     <string name="btnRegisterOnAdding">Register</string>
     <string name="btnBackToLoginOnAdding">Back to Login</string>
 
-    <string name="btnUpdateOnUpdating">UPDATE</string>
     <string name="btnUpdateOnViewing">UPDATE</string>
     <string name="btnViewFeesOnAdding">VIEW FEES</string>
     <string name="btnViewFeesOnViewing">VIEW FEES</string>
     <string name="btnLogoutOnAdding">LOGOUT</string>
-    <string name="btnLogoutOnUpdating">LOGOUT</string>
+
     <string name="btnLogoutOnViewing">LOGOUT</string>
 
     <!--ViewingActivity-->
@@ -41,4 +40,21 @@
     <string name="txtViewingEType"> </string>
     <string name="txtViewingEName"> </string>
     <string name="txtViewingENum"> </string>
+
+    <!--Updating-->
+    <string name="txtUpdatingPDetails">Personal Details</string>
+    <string name="txtUpdatingPname">Patient Name:</string>
+    <string name="txtUpdatingSurname">Surname:</string>
+    <string name="txtUpdatingID">ID Number:</string>
+    <string name="txtUpdatingDOB">Date of Birth:</string>
+    <string name="txtUpdatingCellNum">Cell Number:</string>
+    <string name="txtUpdatingBType">Blood Type:</string>
+    <string name="txtUpdatingEDetails">Emergency Details</string>
+    <string name="txtUpdatingEType">Contact Type:</string>
+    <string name="txtUpdatingEName">Name:</string>
+    <string name="txtUpdatingENum">Cell Number:</string>
+    <string name="btnUpdateOnUpdating">UPDATE</string>
+    <string name="btnViewingOnUpdating">VIEW PERSONAL INFORMATION</string>
+    <string name="btnViewFeesOnUpdating">VIEW FEES</string>
+    <string name="btnLogoutOnUpdating">LOGOUT</string>
 </resources>

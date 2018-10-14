@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Personal Details"
-        android:id="@+id/txtPDetails"
+        android:id="@+id/txtUpdatingPDetails"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtPname"
+            android:id="@+id/txtUpdatingPname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -40,9 +40,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtPname"
+            android:layout_toRightOf="@id/txtUpdatingPname"
             android:textSize="20sp"
-            android:id="@+id/etPName"
+            android:id="@+id/etUpdatingPName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtSurname"
+            android:id="@+id/txtUpdatingSurname"
             android:layout_width="141dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -70,9 +70,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtSurname"
+            android:layout_toRightOf="@id/txtUpdatingSurname"
             android:textSize="20sp"
-            android:id="@+id/etSurname"
+            android:id="@+id/etUpdatingSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtID"
+            android:id="@+id/txtUpdatingID"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -100,9 +100,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtID"
+            android:layout_toRightOf="@id/txtUpdatingID"
             android:textSize="20sp"
-            android:id="@+id/etID"
+            android:id="@+id/etUpdatingID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -117,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtDOB"
+            android:id="@+id/txtUpdatingDOB"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -130,9 +130,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtDOB"
+            android:layout_toRightOf="@id/txtUpdatingDOB"
             android:textSize="20sp"
-            android:id="@+id/etDOB"
+            android:id="@+id/etUpdatingDOB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -147,7 +147,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtCellNum"
+            android:id="@+id/txtUpdatingCellNum"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -160,9 +160,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtCellNum"
+            android:layout_toRightOf="@id/txtUpdatingCellNum"
             android:textSize="20sp"
-            android:id="@+id/etCellNum"
+            android:id="@+id/etUpdatingCellNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -177,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtBType"
+            android:id="@+id/txtUpdatingBType"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -190,9 +190,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtBType"
+            android:layout_toRightOf="@id/txtUpdatingBType"
             android:textSize="20sp"
-            android:id="@+id/etBType"
+            android:id="@+id/etUpdatingBType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -208,7 +208,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Emergency Details"
-        android:id="@+id/txtEDetails"
+        android:id="@+id/txtUpdatingEDetails"
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
@@ -217,7 +217,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtEType"
+            android:id="@+id/txtUpdatingEType"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -230,9 +230,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtEType"
+            android:layout_toRightOf="@id/txtUpdatingEType"
             android:textSize="20sp"
-            android:id="@+id/etEType"
+            android:id="@+id/etUpdatingEType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -247,7 +247,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtEName"
+            android:id="@+id/txtUpdatingEName"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -260,9 +260,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtEName"
+            android:layout_toRightOf="@id/txtUpdatingEName"
             android:textSize="20sp"
-            android:id="@+id/etEName"
+            android:id="@+id/etUpdatingEName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -277,7 +277,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/txtENum"
+            android:id="@+id/txtUpdatingENum"
             android:layout_width="143dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -290,9 +290,9 @@
             android:textStyle="bold" />
         <EditText
             android:layout_alignParentRight="true"
-            android:layout_toRightOf="@id/txtENum"
+            android:layout_toRightOf="@id/txtUpdatingENum"
             android:textSize="20sp"
-            android:id="@+id/etENum"
+            android:id="@+id/etUpdatingENum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -310,6 +310,26 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:text="UPDATE"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/btnViewingOnUpdating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="VIEW PERSONAL INFORMATION"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <Button
+        android:id="@+id/btnViewFeesOnUpdating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="VIEW FEES"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 

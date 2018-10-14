@@ -51,7 +51,8 @@ public class ViewingActivity extends AppCompatActivity {
         progressDialog = ProgressDialog.show(context,
                 "Logging in",
                 "Please be patient....", false);
-        new Thread(new Runnable() {
+        new Thread(new Runnable()
+        {
             public void run() {
                 try {
                     populateViews();

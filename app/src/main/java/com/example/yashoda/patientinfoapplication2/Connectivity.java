@@ -1,6 +1,5 @@
 package com.example.yashoda.patientinfoapplication2;
 
-import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
 import java.sql.Connection;
