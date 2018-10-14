@@ -134,7 +134,7 @@ public class AddingActivity extends AppCompatActivity {
 
     private String getEmergencyQuery(String emergencyType, String emergencyName, String emergencyNumber)
     {
-        return "INSERT INTO FROM EMERGENCY E WHERE E.CONTACTTYPE = '" + emergencyType + "' E.NAME = '" + emergencyName + "' E.CELLNUMBER = '" + emergencyNumber + "'";
+        return "INSERT INTO EMERGENCY E WHERE E.CONTACTTYPE = '" + emergencyType + "' E.NAME = '" + emergencyName + "' E.CELLNUMBER = '" + emergencyNumber + "'";
     }
 
     private void createBackToLoginButton(Button btnBackToLogin) {

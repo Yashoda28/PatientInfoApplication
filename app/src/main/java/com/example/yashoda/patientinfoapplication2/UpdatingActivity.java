@@ -127,6 +127,15 @@ public class UpdatingActivity extends AppCompatActivity
         return "SELECT * FROM EMERGENCY";
     }
 
+    private void createViewFeesButton(Button btnFees) {
+        btnFees.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, ViewFeesActivity.class));
+            }
+        });
+    }
+
     private void createUpdateButton(Button btnUpdate)
     {
         btnUpdate.setOnClickListener(new View.OnClickListener()
@@ -138,16 +147,6 @@ public class UpdatingActivity extends AppCompatActivity
             }
         });
     }
-
-    private void createViewFeesButton(Button btnFees) {
-        btnFees.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(context, ViewFeesActivity.class));
-            }
-        });
-    }
-
 
     private String getPatientUpdatingQuery(int patientID, String pName, String surname, String iDNumber, Date dateOfBirth, String cellNumber, String bloodType) {
         return "UPDATE PATIENT P SET P.PATIENTNAME = '"+ pName + "' P.SURNAME = '" + surname + "' P.IDNUMBER = '" + iDNumber + "' P.DATEOFBIRTH = '" +
