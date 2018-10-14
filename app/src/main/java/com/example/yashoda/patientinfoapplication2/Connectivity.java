@@ -29,7 +29,7 @@ class Connectivity extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
         while (connection == null) {
             connect();
-            if(isCancelled()){
+            if (isCancelled()) {
                 break;
             }
         }
@@ -46,17 +46,17 @@ class Connectivity extends AsyncTask {
     }
 
     synchronized ResultSet getResultSet(String query) throws SQLException {
-            if(connection != null) {
-                Statement sm = connection.createStatement();
-                return sm.executeQuery(query);
-            }
-            throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        if (connection != null) {
+            Statement sm = connection.createStatement();
+            return sm.executeQuery(query);
+        }
+        throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
     }
 
-    synchronized void insertUpdateOrDelete(String query) throws SQLException {
-        if(connection != null) {
+    synchronized int insertUpdateOrDelete(String query) throws SQLException {
+        if (connection != null) {
             Statement sm = connection.createStatement();
-            sm.executeQuery(query);
+            return sm.executeUpdate(query);
         }
         throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
     }

@@ -9,13 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.yashoda.patientinfoapplication2.tables.Patient;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
@@ -80,9 +77,9 @@ public class AddingActivity extends AppCompatActivity {
                 final String emailAddress = editTextEmailAddress.getText().toString();
                 final String password = editTextPassword.getText().toString();
                 final String iDNumber = editTextID.getText().toString();
-                final Date dateOfBirth;
+                String dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
                 try {
-                    dateOfBirth = (Date) new SimpleDateFormat("dd/MM/yyyy").parse(editTextDOB.getText().toString());
+                    dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").format(new SimpleDateFormat("dd/MM/yyyy").parse(editTextDOB.getText().toString()));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -92,13 +89,14 @@ public class AddingActivity extends AppCompatActivity {
                 final String emergencyName = editTextEName.getText().toString();
                 final String emergencyNumber = editTextENum.getText().toString();
                 progressDialog = ProgressDialog.show(context,
-                        "Logging in",
+                        "Updating Information",
                         "Please be patient....", false);
+                final String finalDateOfBirth = dateOfBirth;
                 new Thread(new Runnable() {
                     public void run()
                     {
                         try {
-                            Register(pName, surname, emailAddress, password, iDNumber, dateOfBirth, cellNumber, bloodType, emergencyType, emergencyName, emergencyNumber);
+                            Register(pName, surname, emailAddress, password, iDNumber, finalDateOfBirth, cellNumber, bloodType, emergencyType, emergencyName, emergencyNumber);
                         }
                         catch (final Exception e)
                         {
@@ -115,26 +113,24 @@ public class AddingActivity extends AppCompatActivity {
         });
     }
 
-    private String Register(String pName, String surname, String emailAddress, String password, String iDNumber, Date dateOfBirth, String cellNumber, String bloodType,
-                            String emergencyType, String emergencyName, String emergencyNumber) throws SQLException
+    private Boolean Register(String pName, String surname, String emailAddress, String password, String iDNumber, String dateOfBirth, String cellNumber, String bloodType, String emergencyType, String emergencyName, String emergencyNumber) throws SQLException
     {
-       /* ResultSet rs;
-        rs = connectivity.insertUpdateOrDelete(getPatientQuery(pName, surname, emailAddress, password, iDNumber, dateOfBirth, cellNumber, bloodType));
-        rs.rowin
-        rs = connectivity.insertUpdateOrDelete(getEmergencyQuery(emergencyType, emergencyName, emergencyNumber));
-        return rs;*/
+        int rowsInserted = connectivity.insertUpdateOrDelete(getPatientQuery(pName, surname, emailAddress, password, iDNumber, dateOfBirth, cellNumber, bloodType));
+        rowsInserted = connectivity.insertUpdateOrDelete(getEmergencyQuery(emergencyType, emergencyName, emergencyNumber));
+        progressDialog.cancel();
+        return true;
     }
 
-    private String getPatientQuery(String pName, String surname, String emailAddress, String password, String iDNumber, Date dateOfBirth, String cellNumber, String bloodType)
+    private String getPatientQuery(String pName, String surname, String emailAddress, String password, String iDNumber, String dateOfBirth, String cellNumber, String bloodType)
     {
-        return "INSERT INTO FROM PATIENT P WHERE P.PATIENTNAME = '"+ pName + "' P.SURNAME = '" + surname + "' P.EMAILADDRESS = '" + emailAddress + "' AND P.PASSWORD = '" + password +
-                "' P.IDNUMBER = '" + iDNumber + "' P.DATEOFBIRTH = '" + dateOfBirth + "' P.CELLNUMBER = '" + cellNumber + "' P.BLOODTYPE = '" + bloodType +
-                "' P.CONTACTTYPE = '" + "'";
+        return "INSERT INTO PATIENT (PATIENTNAME, SURNAME, EMAILADDRESS, PASSWORD, IDNUMBER, DATEOFBIRTH, CELLNUMBER, BLOODTYPE,EMERGENCYID)" +
+                "VALUES("+ pName + "," + surname+ "," + emailAddress + "," + password + "," + iDNumber + ",'" + dateOfBirth + "'," + cellNumber + "," + bloodType + ",1"+")";
     }
 
     private String getEmergencyQuery(String emergencyType, String emergencyName, String emergencyNumber)
     {
-        return "INSERT INTO EMERGENCY E WHERE E.CONTACTTYPE = '" + emergencyType + "' E.NAME = '" + emergencyName + "' E.CELLNUMBER = '" + emergencyNumber + "'";
+        return "INSERT INTO EMERGENCY (CONTACTTYPE,NAME,CELLNUMBER)" +
+                "VALUES(" + emergencyType + "," + emergencyName + "," + emergencyNumber + ")";
     }
 
     private void createBackToLoginButton(Button btnBackToLogin) {
