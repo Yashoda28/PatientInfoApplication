@@ -3,22 +3,20 @@ package com.example.yashoda.patientinfoapplication2;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.yashoda.patientinfoapplication2.tables.Emergency;
 import com.example.yashoda.patientinfoapplication2.tables.Patient;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.Date;
 
 import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
-import static com.example.yashoda.patientinfoapplication2.Connectivity.getResultSet;
+
 public class ViewingActivity extends AppCompatActivity {
 
     Connectivity connectivity = new Connectivity();
@@ -27,69 +25,38 @@ public class ViewingActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    TextView pName;
+    TextView surname;
+    TextView idNum;
+    TextView dob;
+    TextView cellNumber;
+    TextView bloodType;
+    TextView eType;
+    TextView eName;
+    TextView eNum;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewing);
 
-        connectivity.execute("");
+        findViews();
 
-        Button btnUpdate= findViewById(R.id.btnUpdateOnViewing);
-        Button btnFees= findViewById(R.id.btnViewFeesOnViewing);
-        final TextView pName = findViewById(R.id.txtViewingPName);
-        final TextView surname = findViewById(R.id.txtViewingSurname);
-        final TextView idNum = findViewById(R.id.txtViewingID);
-        final TextView dob = findViewById(R.id.txtViewingDOB);
-        final TextView cellNumber = findViewById(R.id.txtViewingCellNum);
-        final TextView bloodType = findViewById(R.id.txtViewingBType);
-        final TextView eType = findViewById(R.id.txtViewingEType);
-        final TextView eName = findViewById(R.id.txtViewingEName);
-        final TextView eNum = findViewById(R.id.txtViewingENum);
+        Button btnUpdate = findViewById(R.id.btnUpdateOnViewing);
+        Button btnFees = findViewById(R.id.btnViewFeesOnViewing);
 
         createUpdateButton(btnUpdate);
         createViewFeesButton(btnFees);
 
-        ArrayList<Patient> data = getPatients();
-
-        String pName1 = data.get(0).toString();
-        pName.setText(pName1);
-        String sur = data.get(0).toString();
-        surname.setText(sur);
-        String idN = data.get(0).toString();
-        idNum.setText(idN);
-        String dateOB = data.get(0).toString();
-        dob.setText(dateOB);
-        String cN = data.get(0).toString();
-        cellNumber.setText(cN);
-        String bT = data.get(0).toString();
-        bloodType.setText(bT);
-
-        /*ArrayList<Emergency> emerg = getEmergency();
-        String eT = emerg.get(0).toString();
-        eType.setText(eT);
-        String eN = emerg.get(0).toString();
-        eName.setText(eN);
-        String eNU = emerg.get(0).toString();
-        eNum.setText(eNU);*/
-
-    }
-
-    @NonNull
-    private ArrayList<Patient> getPatients()
-    {
-        final ArrayList<Patient> data = new ArrayList<>();
         progressDialog = ProgressDialog.show(context,
                 "Logging in",
                 "Please be patient....", false);
         new Thread(new Runnable() {
-            public void run()
-            {
+            public void run() {
                 try {
-                    addPatientDataToArray(data);
-                }
-                catch (final Exception e)
-                {
+                    populateViews();
+                    progressDialog.cancel();
+                } catch (final Exception e) {
                     progressDialog.cancel();
                     runOnUiThread(new Runnable() {
                         public void run() {
@@ -99,41 +66,57 @@ public class ViewingActivity extends AppCompatActivity {
                 }
             }
         }).start();
-        return data;
+
     }
 
-    private void addPatientDataToArray(ArrayList<Patient> data) throws Exception {
-        ResultSet rs = getResultSet(getViewingQuery());
-        while (rs.next())
-        {
-            Patient u1 = new Patient(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
-                    rs.getString(6),rs.getDate(7),rs.getString(8),rs.getString(9),rs.getInt(10));
-            data.add(u1);
-        }
+    private void findViews() {
+        pName = findViewById(R.id.txtViewingPName);
+        surname = findViewById(R.id.txtViewingSurname);
+        idNum = findViewById(R.id.txtViewingID);
+        dob = findViewById(R.id.txtViewingDOB);
+        cellNumber = findViewById(R.id.txtViewingCellNum);
+        bloodType = findViewById(R.id.txtViewingBType);
+        eType = findViewById(R.id.txtViewingEType);
+        eName = findViewById(R.id.txtViewingEName);
+        eNum = findViewById(R.id.txtViewingENum);
     }
 
-    /*@NonNull
-    private ArrayList<Emergency> getEmergency()
-    {
-        ArrayList<Emergency> emerg = new ArrayList<>();
-        try {
-            ResultSet rs = getResultSet(getViewingQuery2());
-            while (rs.next())
-            {
-                Emergency u1 = new Emergency(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4));
-                emerg.add(u1);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return emerg;
-    }*/
+    private void populateViews() throws Exception {
+        ResultSet rs = connectivity.getResultSet(getPatientViewingQuery());
+        rs.next();
+        Patient patient = new Patient(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+                rs.getString(6), rs.getDate(7), rs.getString(8), rs.getString(9));
+
+        String pName1 = patient.getPatientName();
+        pName.setText(pName1);
+        String sur = patient.getSurname();
+        surname.setText(sur);
+        String idN = patient.getiDNumber();
+        idNum.setText(idN);
+        Date dateOB = patient.getDateofBirth();
+        dob.setText(dateOB.toString());
+        String cN = patient.getCellNumber();
+        cellNumber.setText(cN);
+        String bT = patient.getBloodType();
+        bloodType.setText(bT);
+
+        rs = connectivity.getResultSet(getEmergencyViewingQuery());
+        rs.next();
+        Emergency emergency = new Emergency(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
+
+        String eT = emergency.getContactType();
+        eType.setText(eT);
+        String eN = emergency.getName();
+        eName.setText(eN);
+        String eNU = emergency.getCellNumber();
+        eNum.setText(eNU);
+    }
 
     private void createViewFeesButton(Button btnFees) {
         btnFees.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context,ViewFeesActivity.class));
+                startActivity(new Intent(context, ViewFeesActivity.class));
             }
         });
     }
@@ -142,16 +125,16 @@ public class ViewingActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(context,UpdatingActivity.class));
+                startActivity(new Intent(context, UpdatingActivity.class));
             }
         });
     }
 
-    private String getViewingQuery() {
+    private String getPatientViewingQuery() {
         return "SELECT * FROM PATIENT";
     }
 
-    /*private String getViewingQuery2() {
+    private String getEmergencyViewingQuery() {
         return "SELECT * FROM EMERGENCY";
-    }*/
+    }
 }

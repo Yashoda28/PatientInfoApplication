@@ -1,14 +1,13 @@
 package com.example.yashoda.patientinfoapplication2.tables;
 
-public class Emergency
-{
+public class Emergency {
     private int emergencyID;
     private String contactType;
     private String name;
     private String cellNumber;
 
-    public Emergency()
-    {}
+    public Emergency() {
+    }
 
     public Emergency(int emergencyID, String contactType, String name, String cellNumber) {
         this.emergencyID = emergencyID;
@@ -35,6 +34,18 @@ public class Emergency
 
     public int getEmergencyID() {
         return emergencyID;
+    }
+
+    public String getContactType() {
+        return contactType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCellNumber() {
+        return cellNumber;
     }
 
     @Override

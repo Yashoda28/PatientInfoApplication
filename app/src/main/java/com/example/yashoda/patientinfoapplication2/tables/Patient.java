@@ -2,8 +2,7 @@ package com.example.yashoda.patientinfoapplication2.tables;
 
 import java.util.Date;
 
-public class Patient
-{
+public class Patient {
     private int patientID;
     private String patientName;
     private String surname;
@@ -13,11 +12,6 @@ public class Patient
     private Date dateofBirth;
     private String cellNumber;
     private String bloodType;
-
-    public Patient(int anInt, String string, String rsString, String s, String string1, String rsString1, java.sql.Date date, String s1, String string2, int rsInt)
-    {
-
-    }
 
     public Patient(int patientID, String patientName, String surname, String emailAddress, String password, String iDNumber, Date dateofBirth, String cellNumber, String bloodType) {
         this.patientID = patientID;
@@ -69,6 +63,38 @@ public class Patient
 
     public int getPatientID() {
         return patientID;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getiDNumber() {
+        return iDNumber;
+    }
+
+    public Date getDateofBirth() {
+        return dateofBirth;
+    }
+
+    public String getCellNumber() {
+        return cellNumber;
+    }
+
+    public String getBloodType() {
+        return bloodType;
     }
 
     @Override

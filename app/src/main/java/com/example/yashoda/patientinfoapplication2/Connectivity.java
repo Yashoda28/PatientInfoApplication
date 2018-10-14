@@ -1,7 +1,6 @@
 package com.example.yashoda.patientinfoapplication2;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.AsyncTask;
 
 import java.sql.Connection;
@@ -31,12 +30,14 @@ class Connectivity extends AsyncTask {
     protected Object doInBackground(Object[] objects) {
         while (connection == null) {
             connect();
+            if(isCancelled()){
+                break;
+            }
         }
         return null;
     }
 
-    @SuppressLint("NewApi")
-    private static void connect() {
+    void connect() {
         setThreadPolicy(policy);
         try {
             connection = DriverManager.getConnection(ConnURL);
@@ -45,11 +46,20 @@ class Connectivity extends AsyncTask {
         }
     }
 
-    static ResultSet getResultSet(String query) throws SQLException {
-        if (connection == null) {
+    synchronized ResultSet getResultSet(String query) throws SQLException {
+            if(connection != null) {
+                Statement sm = connection.createStatement();
+                return sm.executeQuery(query);
+            }
             throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
-        }
-        Statement sm = connection.createStatement();
-        return sm.executeQuery(query);
     }
+
+    synchronized void insertUpdateOrDelete(String query) throws SQLException {
+        if(connection != null) {
+            Statement sm = connection.createStatement();
+            sm.executeQuery(query);
+        }
+        throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+    }
+
 }

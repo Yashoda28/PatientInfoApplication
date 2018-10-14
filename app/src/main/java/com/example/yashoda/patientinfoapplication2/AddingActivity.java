@@ -2,22 +2,11 @@ package com.example.yashoda.patientinfoapplication2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.example.yashoda.patientinfoapplication2.tables.Patient;
-
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-
-import static com.example.yashoda.patientinfoapplication2.Connectivity.getResultSet;
 
 public class AddingActivity extends AppCompatActivity {
     Connectivity connectivity = new Connectivity();

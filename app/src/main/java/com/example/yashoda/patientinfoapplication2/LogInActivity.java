@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import javax.security.auth.login.LoginException;
 
 import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
-import static com.example.yashoda.patientinfoapplication2.Connectivity.getResultSet;
 import static java.lang.Thread.sleep;
 
 public class LogInActivity extends AppCompatActivity {
@@ -27,6 +26,7 @@ public class LogInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        connectivity.execute("");
 
         setContentView(R.layout.activity_log_in);
 
@@ -37,7 +37,6 @@ public class LogInActivity extends AppCompatActivity {
 
         createLoginBtn(btnLogin, editTextEmailAddress, editTextPassword);
         createRegistrationBtn(btnReg);
-        connectivity.execute("");
     }
 
     private void createLoginBtn(Button btnLogin, final EditText editTextEmailAddress, final EditText editTextPassword) {
@@ -84,7 +83,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void LogIn(String emailAddress, String password) throws Exception {
-        ResultSet rs = getResultSet(getLoginQuery(emailAddress, password));
+        ResultSet rs = connectivity.getResultSet(getLoginQuery(emailAddress, password));
         rs.next();
         if (rs.getInt("RECORDCOUNT") == 1) {
             goToInfoView();
