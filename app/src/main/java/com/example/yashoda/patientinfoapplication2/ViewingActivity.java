@@ -1,5 +1,6 @@
 package com.example.yashoda.patientinfoapplication2;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,9 +15,9 @@ import com.example.yashoda.patientinfoapplication2.tables.Emergency;
 import com.example.yashoda.patientinfoapplication2.tables.Patient;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
 import static com.example.yashoda.patientinfoapplication2.Connectivity.getResultSet;
 public class ViewingActivity extends AppCompatActivity {
 
@@ -24,11 +25,15 @@ public class ViewingActivity extends AppCompatActivity {
 
     Context context = ViewingActivity.this;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_viewing);
+
+        connectivity.execute("");
 
         Button btnUpdate= findViewById(R.id.btnUpdateOnViewing);
         Button btnFees= findViewById(R.id.btnViewFeesOnViewing);
@@ -44,8 +49,6 @@ public class ViewingActivity extends AppCompatActivity {
 
         createUpdateButton(btnUpdate);
         createViewFeesButton(btnFees);
-
-        connectivity.execute("");
 
         ArrayList<Patient> data = getPatients();
 
@@ -75,20 +78,38 @@ public class ViewingActivity extends AppCompatActivity {
     @NonNull
     private ArrayList<Patient> getPatients()
     {
-        ArrayList<Patient> data = new ArrayList<>();
-        try {
-            ResultSet rs = getResultSet(getViewingQuery());
-            while (rs.next())
+        final ArrayList<Patient> data = new ArrayList<>();
+        progressDialog = ProgressDialog.show(context,
+                "Logging in",
+                "Please be patient....", false);
+        new Thread(new Runnable() {
+            public void run()
             {
-                Patient u1 = new Patient(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
-                        rs.getString(6),rs.getDate(7),rs.getString(8),rs.getString(9),rs.getInt(10));
-                data.add(u1);
+                try {
+                    addPatientDataToArray(data);
+                }
+                catch (final Exception e)
+                {
+                    progressDialog.cancel();
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            handleException(context, e, e.getMessage());
+                        }
+                    });
+                }
             }
-        } catch (SQLException e) {
-            Toast.makeText(ViewingActivity.this , "Prepared Statement" , Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
+        }).start();
         return data;
+    }
+
+    private void addPatientDataToArray(ArrayList<Patient> data) throws Exception {
+        ResultSet rs = getResultSet(getViewingQuery());
+        while (rs.next())
+        {
+            Patient u1 = new Patient(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),
+                    rs.getString(6),rs.getDate(7),rs.getString(8),rs.getString(9),rs.getInt(10));
+            data.add(u1);
+        }
     }
 
     /*@NonNull

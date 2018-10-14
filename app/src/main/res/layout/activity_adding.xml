@@ -42,7 +42,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtPname"
             android:textSize="20sp"
-            android:id="@+id/etPName"
+            android:id="@+id/etAddingPName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content">
         <TextView
             android:id="@+id/txtSurname"
-            android:layout_width="141dp"
+            android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
@@ -72,7 +72,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtSurname"
             android:textSize="20sp"
-            android:id="@+id/etSurname"
+            android:id="@+id/etAddingSurname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -87,6 +87,67 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/txtEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentStart="true"
+            android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:singleLine="true"
+            android:text="Email Address:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtEmailAddress"
+            android:textSize="20sp"
+            android:id="@+id/etAddingEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtPassword"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:paddingLeft="10dp"
+            android:singleLine="true"
+            android:text="Password:"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <EditText
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/txtPassword"
+            android:textSize="20sp"
+            android:id="@+id/etAddingPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
             android:id="@+id/txtID"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
@@ -98,11 +159,12 @@
             android:text="ID Number:"
             android:textSize="20sp"
             android:textStyle="bold" />
+
         <EditText
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtID"
             android:textSize="20sp"
-            android:id="@+id/etID"
+            android:id="@+id/etAddingID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -132,13 +194,14 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtDOB"
             android:textSize="20sp"
-            android:id="@+id/etDOB"
+            android:id="@+id/etAddingDOB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:inputType="text"
+            android:hint="dd/mm/yyyy"
             android:singleLine="true"
             android:textColor="@color/white"/>
     </RelativeLayout>
@@ -162,7 +225,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtCellNum"
             android:textSize="20sp"
-            android:id="@+id/etCellNum"
+            android:id="@+id/etAddingCellNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -192,7 +255,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtBType"
             android:textSize="20sp"
-            android:id="@+id/etBType"
+            android:id="@+id/etAddingBType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -232,7 +295,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtEType"
             android:textSize="20sp"
-            android:id="@+id/etEType"
+            android:id="@+id/etAddingEType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -262,7 +325,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtEName"
             android:textSize="20sp"
-            android:id="@+id/etEName"
+            android:id="@+id/etAddingEName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -292,7 +355,7 @@
             android:layout_alignParentRight="true"
             android:layout_toRightOf="@id/txtENum"
             android:textSize="20sp"
-            android:id="@+id/etENum"
+            android:id="@+id/etAddingENum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -303,42 +366,34 @@
             android:textColor="@color/white"/>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btnAdd"
+   <!-- <Button
+        android:id="@+id/btnAddOnAdding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal"
         android:text="ADD"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_marginRight="10dp" />-->
+
     <Button
-        android:id="@+id/btnUpdateOnAdding"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnRegisterOnAdding"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
-        android:text="UPDATE"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
-    <Button
-        android:id="@+id/btnViewFeesOnAdding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:text="VIEW FEES"
+        android:text="Register"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/btnBackToLoginOnAdding"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:text="Back to Login"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
-        android:id="@+id/btnLogoutOnAdding"
-        android:text="LOGOUT"
-        android:layout_alignParentBottom="true" />
 
 </LinearLayout>
 </ScrollView>

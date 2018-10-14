@@ -50,10 +50,13 @@ public class LogInActivity extends AppCompatActivity {
                         "Logging in",
                         "Please be patient....", false);
                 new Thread(new Runnable() {
-                    public void run() {
+                    public void run()
+                    {
                         try {
                             LogIn(emailAddress, password);
-                        } catch (final Exception e) {
+                        }
+                        catch (final Exception e)
+                        {
                             progressDialog.cancel();
                             runOnUiThread(new Runnable() {
                                 public void run() {
@@ -77,7 +80,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void goToRegistration() {
-        startActivity(new Intent(LogInActivity.this, RegisterActivity.class));
+        startActivity(new Intent(LogInActivity.this, AddingActivity.class));
     }
 
     private void LogIn(String emailAddress, String password) throws Exception {
