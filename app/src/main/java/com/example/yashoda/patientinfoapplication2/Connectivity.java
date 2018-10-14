@@ -1,37 +1,55 @@
 package com.example.yashoda.patientinfoapplication2;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
+import android.content.Context;
+import android.os.AsyncTask;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import static android.os.StrictMode.*;
+import static com.example.yashoda.patientinfoapplication2.CommonUtils.Log;
 
-class Connectivity {
+class Connectivity extends AsyncTask {
     //Declaration of connection parameters
-    static private final String ip = "143.128.146.30";
-    static private final String db = "hon01";
-    static private final String un = "hon01";
-    static private final String password = "12q26";
-    static private final String ConnURL = "jdbc:jtds:sqlserver://" + ip + "/" + ";db=" + db + ";user=" + un + ";password=" + password + ";"; //Connection String
+    private static final String ip = "143.128.146.30";
+    private static final String db = "hon01";
+    private static final String un = "hon01";
+    private static final String password = "12q26";
+    private static final String ConnURL = "jdbc:jtds:sqlserver://" + ip + "/" + ";db=" + db + ";user=" + un + ";password=" + password + ";"; //Connection String
 
-    static private final ThreadPolicy policy = new ThreadPolicy.Builder().permitAll().build();
+    private static final String FAILED_TO_CONNECT_ERROR_MESSAGE = "Failed to connect, Please check Internet Connection";
 
-    private Connection connection;
+    private static final ThreadPolicy policy = new ThreadPolicy.Builder().permitAll().build();
+
+    private static Connection connection;
+
+    @Override
+    protected Object doInBackground(Object[] objects) {
+        while (connection == null) {
+            connect();
+        }
+        return null;
+    }
 
     @SuppressLint("NewApi")
-    private Connection connect() throws Exception {
+    private static void connect() {
         setThreadPolicy(policy);
-        connectToDB();//Instantiating JDBC Drivers
-        return connection;
+        try {
+            connection = DriverManager.getConnection(ConnURL);
+        } catch (SQLException e) {
+            Log(e);
+        }
     }
 
-    private void connectToDB() throws Exception {
-        connection = DriverManager.getConnection(ConnURL);
-    }
-
-    public Connection getConnection() throws Exception {
-        return connect();
+    static ResultSet getResultSet(String query) throws SQLException {
+        if (connection == null) {
+            throw new SQLException(FAILED_TO_CONNECT_ERROR_MESSAGE);
+        }
+        Statement sm = connection.createStatement();
+        return sm.executeQuery(query);
     }
 }

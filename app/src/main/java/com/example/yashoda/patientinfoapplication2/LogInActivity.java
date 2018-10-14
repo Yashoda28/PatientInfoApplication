@@ -1,32 +1,33 @@
 package com.example.yashoda.patientinfoapplication2;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import javax.security.auth.login.LoginException;
+
+import static com.example.yashoda.patientinfoapplication2.CommonUtils.handleException;
+import static com.example.yashoda.patientinfoapplication2.Connectivity.getResultSet;
+import static java.lang.Thread.sleep;
 
 public class LogInActivity extends AppCompatActivity {
-    Connectivity connectivity;
+    Connectivity connectivity = new Connectivity();
 
-    public LogInActivity() {
-        connectivity = new Connectivity();
-    }
+    Context context = LogInActivity.this;
 
-    Connection connection;
-    private static final String FAILED_TO_CONNECT_ERROR_MESSAGE = "Failed to connect, Please check Internet Connection";
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_log_in);
 
         Button btnLogin = findViewById(R.id.btnLogin);
@@ -36,22 +37,27 @@ public class LogInActivity extends AppCompatActivity {
 
         createLoginBtn(btnLogin, editTextEmailAddress, editTextPassword);
         createRegistrationBtn(btnReg);
-
-        connection = getDBConnection();
+        connectivity.execute("");
     }
 
     private void createLoginBtn(Button btnLogin, final EditText editTextEmailAddress, final EditText editTextPassword) {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emailAddress = editTextEmailAddress.getText().toString();
-                String password = editTextPassword.getText().toString();
-                try {
-                    LogIn(emailAddress, password);
-                } catch (Exception e) {
-                    Log(e);
-                    Toast.makeText(LogInActivity.this, "Error Logging In", Toast.LENGTH_LONG).show();
-                }
+                final String emailAddress = editTextEmailAddress.getText().toString();
+                final String password = editTextPassword.getText().toString();
+                progressDialog = ProgressDialog.show(context,
+                        "Logging in",
+                        "Please be patient....", false);
+                new Thread(new Runnable() {
+                    public void run() {
+                        try {
+                            LogIn(emailAddress, password);
+                        } catch (Exception e) {
+                            handleException(context, e, e.getMessage());
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -69,43 +75,23 @@ public class LogInActivity extends AppCompatActivity {
         startActivity(new Intent(LogInActivity.this, RegisterActivity.class));
     }
 
-    private void LogIn(String emailAddress, String password) throws SQLException {
-        ResultSet rs = getLogInResultSet(emailAddress, password);
+    private void LogIn(String emailAddress, String password) throws Exception {
+        ResultSet rs = getResultSet(getLoginQuery(emailAddress, password));
         rs.next();
         if (rs.getInt("RECORDCOUNT") == 1) {
             goToInfoView();
-        }
-        else{
-            Toast.makeText(LogInActivity.this, "Incorrect Log In Details", Toast.LENGTH_LONG).show();
+        } else {
+            throw new LoginException("Incorrect Log In Details");
         }
     }
 
-    private void goToInfoView() {
+    private void goToInfoView() throws InterruptedException {
         startActivity(new Intent(LogInActivity.this, ViewingActivity.class));
-    }
-
-    private ResultSet getLogInResultSet(String emailAddress, String password) throws SQLException {
-        String query = getLoginQuery(emailAddress, password);
-        Statement sm = connection.createStatement();
-        return sm.executeQuery(query);
+        sleep(1000);
+        progressDialog.cancel();
     }
 
     private String getLoginQuery(String emailAddress, String password) {
-        return "SELECT COUNT(*) as RECORDCOUNT FROM PATIENT P WHERE P.EMAILADDRESS = '" + emailAddress + "' AND P.PASSWORD = '" + password + "'";
-    }
-
-    private Connection getDBConnection() {
-        try {
-            return connectivity.getConnection();
-        } catch (Exception e) {
-            Log(e);
-            Toast.makeText(LogInActivity.this, FAILED_TO_CONNECT_ERROR_MESSAGE, Toast.LENGTH_LONG).show();
-            getDBConnection();
-            return null;
-        }
-    }
-
-    private static void Log(Exception se) {
-        Log.e(se.getClass().getName(), se.getMessage());
+        return "SELECT COUNT(*) AS RECORDCOUNT FROM PATIENT P WHERE P.EMAILADDRESS = '" + emailAddress + "' AND P.PASSWORD = '" + password + "'";
     }
 }
