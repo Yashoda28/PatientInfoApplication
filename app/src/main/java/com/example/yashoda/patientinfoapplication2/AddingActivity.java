@@ -124,13 +124,13 @@ public class AddingActivity extends AppCompatActivity {
     private String getPatientQuery(String pName, String surname, String emailAddress, String password, String iDNumber, String dateOfBirth, String cellNumber, String bloodType)
     {
         return "INSERT INTO PATIENT (PATIENTNAME, SURNAME, EMAILADDRESS, PASSWORD, IDNUMBER, DATEOFBIRTH, CELLNUMBER, BLOODTYPE,EMERGENCYID)" +
-                "VALUES("+ pName + "," + surname+ "," + emailAddress + "," + password + "," + iDNumber + ",'" + dateOfBirth + "'," + cellNumber + "," + bloodType + ",1"+")";
+                "VALUES('"+ pName + "','" + surname+ "','" + emailAddress + "','" + password + "'," + iDNumber + ",'" + dateOfBirth + "'," + cellNumber + ",'" + bloodType + "',1"+")";
     }
 
     private String getEmergencyQuery(String emergencyType, String emergencyName, String emergencyNumber)
     {
         return "INSERT INTO EMERGENCY (CONTACTTYPE,NAME,CELLNUMBER)" +
-                "VALUES(" + emergencyType + "," + emergencyName + "," + emergencyNumber + ")";
+                "VALUES('" + emergencyType + "','" + emergencyName + "'," + emergencyNumber + ")";
     }
 
     private void createBackToLoginButton(Button btnBackToLogin) {
