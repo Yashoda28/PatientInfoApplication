@@ -6,6 +6,10 @@ import android.widget.Toast;
 
 class CommonUtils {
 
+
+    public static String userName = "key1";
+    public static String patientID = "key2";
+
     static void showMessage(final Context context, final String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
